@@ -1,0 +1,301 @@
+/* ==========================================
+
+RESET & BASE STYLES
+========================================== */
+
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+background-color: #f8fafc;
+color: #1e293b;
+line-height: 1.6;
+-webkit-font-smoothing: antialiased;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+/* Layout Container */
+.container {
+max-width: 720px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+/* ==========================================
+2. NAVIGATION BAR
+========================================== */
+.navbar {
+position: sticky;
+top: 0;
+background-color: #f5f1f1;
+border-bottom: 1px solid #e2e8f0;
+z-index: 100;
+}
+
+.nav-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 64px;
+}
+
+.nav-logo {
+font-weight: 700;
+font-size: 2.1rem;
+font-style: italic;
+color: #0f172a;
+}
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 20px;
+}
+
+.nav-links a {
+font-size: 0.95rem;
+color: #64748b;
+font-weight: 500;
+transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+color: #2563eb;
+}
+
+/* ==========================================
+3. SECTIONS & TYPOGRAPHY
+========================================== */
+.section {
+padding: 48px 0;
+border-bottom: 1px solid #e2e8f0;
+}
+
+.section:last-of-type {
+border-bottom: none;
+}
+
+.section-title {
+font-size: 1.35rem;
+font-weight: 700;
+color: #0f172a;
+margin-bottom: 16px;
+letter-spacing: -0.01em;
+}
+
+/* ==========================================
+4. PROFILE CARD
+========================================== */
+.profile-card {
+display: flex;
+align-items: center;
+gap: 28px;
+background-color: #ffffff;
+border: 1px solid #e2e8f0;
+border-radius: 12px;
+padding: 28px;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.avatar {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+background-color: #2563eb;
+color: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
+font-style: italic;
+font-weight: 700;
+flex-shrink: 0;
+}
+
+.profile-details {
+flex: 1;
+}
+
+.profile-name {
+font-size: 1.6rem;
+font-weight: 700;
+color: #0f172a;
+line-height: 1.2;
+margin-bottom: 4px;
+}
+
+.profile-title {
+font-size: 0.95rem;
+color: #2563eb;
+font-weight: 600;
+margin-bottom: 12px;
+}
+
+.profile-bio {
+font-size: 0.95rem;
+color: #475569;
+margin-bottom: 16px;
+}
+
+.social-links {
+display: flex;
+gap: 16px;
+}
+
+.social-links a {
+font-size: 0.85rem;
+font-weight: 600;
+color: #64748b;
+border-bottom: 1px solid transparent;
+transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+color: #2563eb;
+border-bottom-color: #2563eb;
+}
+
+/* ==========================================
+5. ABOUT & SKILLS
+========================================== */
+.about-text {
+font-size: 1rem;
+color: #475569;
+line-height: 1.7;
+}
+
+.skills-intro {
+font-size: 0.95rem;
+color: #64748b;
+margin-bottom: 16px;
+}
+
+.skills-list {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+.skill-tag {
+font-size: 0.875rem;
+font-weight: 500;
+background-color: #ffffff;
+border: 1px solid #cbd5e1;
+color: #334155;
+padding: 6px 14px;
+border-radius: 6px;
+}
+
+/* ==========================================
+6. CONTACT FORM
+========================================== */
+.contact-subtitle {
+font-size: 0.95rem;
+color: #64748b;
+margin-bottom: 24px;
+}
+
+.contact-form {
+display: flex;
+flex-direction: column;
+gap: 18px;
+}
+
+.form-group {
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.form-group label {
+font-size: 0.875rem;
+font-weight: 600;
+color: #334155;
+}
+
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 10px 14px;
+font-size: 0.95rem;
+font-family: inherit;
+background-color: #ffffff;
+border: 1px solid #cbd5e1;
+border-radius: 6px;
+color: #0f172a;
+outline: none;
+transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+border-color: #2563eb;
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+resize: vertical;
+}
+
+.btn-submit {
+background-color: #2563eb;
+color: #ffffff;
+border: none;
+padding: 12px 24px;
+font-size: 0.95rem;
+font-weight: 600;
+border-radius: 6px;
+cursor: pointer;
+align-self: flex-start;
+transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+background-color: #1d4ed8;
+}
+
+/* ==========================================
+7. FOOTER
+========================================== */
+.footer {
+padding: 32px 0;
+text-align: center;
+font-size: 0.875rem;
+color: #94a3b8;
+background-color: #ffffff;
+border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+.profile-card {
+flex-direction: column;
+text-align: center;
+}
+
+.social-links {
+    justify-content: center;
+}
+
+.btn-submit {
+    width: 100%;
+}
+
+.nav-links {
+    gap: 12px;
+}
+
+
+}
