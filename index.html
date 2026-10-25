@@ -25,19 +25,19 @@
     <!-- Main Content Area -->
     <main>
 
-        <!-- About Section -->
-        <section id="about" class="about-section">
-            <div class="profile-card" style="display: flex; align-items: center; gap: 20px; padding: 20px;">
-                <div class="avatar-container" style="text-align: center;">
+        <!-- About Section (Centered in Middle of Screen) -->
+        <section id="about" class="about-section" style="max-width: 600px; margin: 30px auto; text-align: center;">
+            <div class="profile-card" style="display: flex; flex-direction: column; align-items: center; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #ddd;">
+                <div class="avatar-container" style="text-align: center; margin-bottom: 15px;">
                     <img src="https://images.unsplash.com/photo-1638947693941-669835e07b4c?fm=jpg&q=60&w=800&auto=format&fit=crop" 
                          alt="Cute Cat Avatar" 
                          class="profile-img" 
                          style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #007bff; display: block; margin: 0 auto 10px auto;">
                     <button class="avatar-btn" style="padding: 5px 10px; font-size: 0.8rem; cursor: pointer;">Change Avatar</button>
                 </div>
-                <div class="about-content">
-                    <h2>Welcome, I'm Thapa Riza</h2>
-                    <p>As a beginner in web development, I created this portfolio to showcase the famous religious places of Nepal while learning the fundamentals of HTML, CSS, and JavaScript. I'm looking forward to continuously learning and building my skills!</p>
+                <div class="about-content" style="text-align: center;">
+                    <h2 style="margin-bottom: 10px; color: #2c3e50;">Welcome, I'm Thapa Riza</h2>
+                    <p style="color: #555; line-height: 1.6; margin: 0;">As a beginner in web development, I created this portfolio to showcase the famous religious places of Nepal while learning the fundamentals of HTML, CSS, and JavaScript. I'm looking forward to continuously learning and building my skills!</p>
                 </div>
             </div>
         </section>
@@ -51,7 +51,7 @@
                 <!-- Card 1: Janaki Mandir -->
                 <div class="card" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; padding: 20px; background: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                     <h3 class="card-title" style="margin-top: 0; margin-bottom: 12px; color: #2c3e50;">1. Janaki Mandir</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Janaki_Mandir_of_Janakpurdham%2C_Nepal.jpg" 
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=800&auto=format&fit=crop" 
                          alt="Janaki Mandir" 
                          style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;">
                     <div class="card-content">
@@ -113,7 +113,7 @@
 
         <!-- Guestbook Section -->
         <section id="guestbook" class="guestbook-section" style="max-width: 600px; margin: 40px auto;">
-            <h2 class="section-title">Visitor Guestbook</h2>
+            <h2 class="section-title" style="text-align: center;">Visitor Guestbook</h2>
             <form class="guestbook-form" onsubmit="addComment(event)">
                 <input type="text" id="visitorName" placeholder="Your Name" required>
                 <textarea id="visitorMessage" placeholder="Leave a message or feedback..." required></textarea>
