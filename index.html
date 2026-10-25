@@ -1,102 +1,498 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thapa Riza - Personal Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Thapa Riza - Religious Places of Nepal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0f172a;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .avatar-container {
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #38bdf8;
+            margin-bottom: 0.5rem;
+        }
+
+        .avatar-btn {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .avatar-btn:hover {
+            background-color: #0369a1;
+        }
+
+        .profile-info h1 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            color: #475569;
+            font-size: 1rem;
+        }
+
+        /* Avatar Modal Option */
+        .avatar-picker {
+            display: none;
+            margin-top: 1rem;
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .avatar-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            justify-content: center;
+        }
+
+        .avatar-opt {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .avatar-opt:hover {
+            border-color: #0284c7;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 1.5rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Grid Cards */
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #0f172a;
+            margin-bottom: 0.4rem;
+        }
+
+        .card-location {
+            font-size: 0.85rem;
+            color: #0284c7;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* Guestbook Section */
+        .guestbook-section {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .guestbook-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            background-color: #0f172a;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e293b;
+        }
+
+        .comments-list {
+            list-style: none;
+        }
+
+        .comment-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #0284c7;
+            margin-bottom: 0.75rem;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: #0f172a;
+        }
+
+        .comment-text {
+            font-size: 0.9rem;
+            color: #334155;
+            margin-top: 0.25rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 1. NAVIGATION BAR -->
-    <header class="navbar">
-        <div class="container nav-content">
-            <a href="#home" class="nav-logo">Thapa Riza</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Thapa Riza</div>
+        <ul class="nav-links">
+            <li><a href="#profile">About</a></li>
+            <li><a href="#places">Religious Places</a></li>
+            <li><a href="#guestbook">Guestbook</a></li>
+        </ul>
+    </nav>
 
-    <main class="container">
-        
-        <!-- 2. PROFILE CARD (HOME) -->
-        <section id="home" class="section">
-            <div class="profile-card">
-                <div class="avatar">TR</div>
-                <div class="profile-details">
-                    <h1 class="profile-name">Thapa Riza</h1>
-                    <p class="profile-title">Computer Engineering Student</p>
-                    <p class="profile-bio">
-                        Passionate about crafting simple, clean, and accessible web experiences using modern web standards.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://github.com/rizamagar" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+    <div class="container">
+
+        <!-- Profile Section -->
+        <section id="profile" class="profile-card">
+            <div class="avatar-container">
+                <img id="current-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Thapa Riza Avatar" class="profile-avatar">
+                <br>
+                <button class="avatar-btn" onclick="toggleAvatarPicker()">Change Avatar</button>
+            </div>
+            
+            <div class="profile-info">
+                <h1>Welcome, I'm Thapa Riza</h1>
+                <p>Explore this showcase of famous religious places in Nepal, highlighting rich culture, historic architecture, and peaceful heritage sites.</p>
+
+                <!-- Avatar Selection Box -->
+                <div id="avatar-picker" class="avatar-picker">
+                    <p style="font-size: 0.8rem; font-weight: bold; margin-bottom: 0.5rem;">Choose Avatar or Paste Image URL:</p>
+                    <div class="avatar-options">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" class="avatar-opt" onclick="setAvatar(this.src)">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" class="avatar-opt" onclick="setAvatar(this.src)">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" class="avatar-opt" onclick="setAvatar(this.src)">
+                    </div>
+                    <input type="text" placeholder="Or paste image URL here..." class="url-input" onchange="setAvatar(this.value)">
+                </div>
+            </div>
+        </section>
+
+        <!-- Religious Places Section -->
+        <section id="places">
+            <h2 class="section-title">Religious Places of Nepal</h2>
+            
+            <div class="places-grid">
+
+                <!-- Card 1: Janaki Mandir -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1623838838316-98108428867a?auto=format&fit=crop&w=800&q=80" alt="Janaki Mandir" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Janaki Mandir</h3>
+                        <p class="card-location">📍 Janakpur, Nepal</p>
+                        <p class="card-desc">A stunning Hindu temple designed in Mughal and Rajput architectural styles, dedicated to Goddess Sita.</p>
                     </div>
                 </div>
+
+                <!-- Card 2: Pashupatinath Temple -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=800&q=80" alt="Pashupatinath Temple" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Pashupatinath Temple</h3>
+                        <p class="card-location">📍 Kathmandu, Nepal</p>
+                        <p class="card-desc">One of the most sacred Hindu temples dedicated to Lord Shiva, located on the banks of the Bagmati River.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Swayambhunath Stupa -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Swayambhunath Stupa" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Swayambhunath Stupa</h3>
+                        <p class="card-location">📍 Kathmandu, Nepal</p>
+                        <p class="card-desc">An ancient religious complex atop a hill in the Kathmandu Valley, also known as the Monkey Temple.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Lumbini -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=800&q=80" alt="Lumbini" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Lumbini</h3>
+                        <p class="card-location">📍 Rupandehi, Nepal</p>
+                        <p class="card-desc">The revered birthplace of Lord Buddha, featuring the Maya Devi Temple and international monasteries.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5: Muktinath Temple -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80" alt="Muktinath Temple" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Muktinath Temple</h3>
+                        <p class="card-location">📍 Mustang, Nepal</p>
+                        <p class="card-desc">A sacred Vishnu temple located at high altitude, sacred to both Hindu and Buddhist pilgrims.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6: Boudhanath Stupa -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565354044581-58309f3e4e94?auto=format&fit=crop&w=800&q=80" alt="Boudhanath Stupa" class="card-img">
+                    <div class="card-content">
+                        <h3 class="card-title">Boudhanath Stupa</h3>
+                        <p class="card-location">📍 Kathmandu, Nepal</p>
+                        <p class="card-desc">One of the largest spherical stupas in Nepal, serving as a focal point for Tibetan Buddhism.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- 3. ABOUT & SKILLS SECTION -->
-        <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <p class="about-text">
-                Hello! I am a computer engineering student. As a beginner in web developement, I'm learning how to create and design webpages. I enjoy exploring new technologies and strenghthening my coding skills.
-            </p>
-        </section>
-
-        <section id="skills" class="section">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <p class="skills-intro">Core technologies and tools I work with daily:</p>
-            <div class="skills-list">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS3 / Flexbox / Grid</span>
-                <span class="skill-tag">Responsive Design</span>
-                <span class="skill-tag">Git & GitHub</span>
-                
-            </div>
-        </section>
-
-        <!-- 4. CONTACT FORM -->
-        <section id="contact" class="section">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="contact-subtitle">Have a question or want to connect? Send me a message below!</p>
-            
-            <form class="contact-form" action="#" method="POST">
+        <!-- Guestbook Section -->
+        <section id="guestbook" class="guestbook-section">
+            <h2 class="section-title">Visitor Guestbook</h2>
+            <form class="guestbook-form" onsubmit="addComment(event)">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required placeholder="Your full name">
+                    <input type="text" id="visitor-name" placeholder="Your Name" required>
                 </div>
-
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    <textarea id="visitor-message" rows="3" placeholder="Leave a comment about these religious places..." required></textarea>
                 </div>
-
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Write your message here..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Send Message</button>
+                <button type="submit" class="submit-btn">Post Message</button>
             </form>
+
+            <ul id="comments-list" class="comments-list">
+                <!-- Comments dynamically load here -->
+            </ul>
         </section>
 
-    </main>
+    </div>
 
-    <!-- 5. FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 John Doe. Built with HTML & CSS.</p>
-        </div>
+    <footer>
+        <p>&copy; Thapa Riza - Religious Places of Nepal</p>
     </footer>
 
+    <script>
+        // Toggle Avatar Picker
+        function toggleAvatarPicker() {
+            const picker = document.getElementById('avatar-picker');
+            picker.style.display = picker.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Set Avatar Image
+        function setAvatar(src) {
+            if (src && src.trim() !== '') {
+                document.getElementById('current-avatar').src = src;
+            }
+        }
+
+        // Load Comments from LocalStorage
+        function loadComments() {
+            const list = document.getElementById('comments-list');
+            const saved = JSON.parse(localStorage.getItem('riza_comments')) || [
+                { name: 'Aayush', message: 'Janaki Mandir looks beautiful!' },
+                { name: 'Sujata', message: 'Great collection of sacred places.' }
+            ];
+
+            list.innerHTML = '';
+            saved.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'comment-item';
+                li.innerHTML = `<div class="comment-author">${escapeHtml(item.name)}</div><div class="comment-text">${escapeHtml(item.message)}</div>`;
+                list.appendChild(li);
+            });
+        }
+
+        // Add New Comment
+        function addComment(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('visitor-name');
+            const messageInput = document.getElementById('visitor-message');
+
+            const newComment = {
+                name: nameInput.value,
+                message: messageInput.value
+            };
+
+            const saved = JSON.parse(localStorage.getItem('riza_comments')) || [
+                { name: 'Aayush', message: 'Janaki Mandir looks beautiful!' },
+                { name: 'Sujata', message: 'Great collection of sacred places.' }
+            ];
+
+            saved.unshift(newComment);
+            localStorage.setItem('riza_comments', JSON.stringify(saved));
+
+            nameInput.value = '';
+            messageInput.value = '';
+            loadComments();
+        }
+
+        // Escape HTML to prevent injection
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text;
+            return div.innerHTML;
+        }
+
+        // Initial load
+        window.onload = loadComments;
+    </script>
 </body>
 </html>
+
+```
